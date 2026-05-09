@@ -1,12 +1,16 @@
-name: Exercise 1 - Hello GitHub Actions
+name: Hello Agile
 
 on:
-  push
+  push:
+    branches: [ dev ]
+
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  hello:
+  say_hello:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Print Hello Message
+      - name: Print Hello
         run: echo "Hello from GitHub Actions!"

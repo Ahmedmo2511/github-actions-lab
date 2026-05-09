@@ -1,0 +1,21 @@
+name: Exercise 2 - Dev Branch & Pull Requests
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - name: Print Workflow Info
+        run: |
+          echo "Workflow triggered!"
+          echo "Branch: ${{ github.ref }}"
+          echo "Event: ${{ github.event_name }}"

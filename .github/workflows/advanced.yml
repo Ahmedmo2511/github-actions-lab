@@ -1,41 +1,25 @@
-name: Exercise 3 - Advanced Python Workflow
+name: Action Basics Demo
 
-on:
-  push:
-    branches: [ dev, main ]
-  pull_request:
-    branches: [ main ]
+on: [push]
 
 jobs:
-  python-job:
+  build:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-      
-      - name: Set up Python
+      - name: Echo String
+        run: echo "Welcome to GitHub Actions!"
+
+      - name: Setup Python
         uses: actions/setup-python@v5
+
         with:
           python-version: '3.10'
-      
-      - name: Print Welcome Message
-        run: echo "Welcome to Advanced GitHub Actions with Python!"
-      
-      - name: Print Python Version
-        run: python --version
-      
-      - name: Run Counting Script
+
+      - name: Run Python Commands
         run: |
-          python -c "
-          print('Starting counter...')
-          for i in range(1, 6):
-              print(f'Count: {i}')
-          print('Counter completed!')
-          "
-      
-      - name: Install Example Package
-        run: pip install requests
-      
-      - name: Verify Installation
-        run: python -c "import requests; print(f'Requests library version: {requests.__version__}')"
+          echo "---"
+          python --version
+          python -c "print('Hello from Python in GitHub Actions!')"
+          python -c "for i in range(3): print(f'Counting {i+1}')"
+          echo "---"
